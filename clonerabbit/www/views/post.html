@@ -1,0 +1,13 @@
+<ion-view view-title="Post" hide-nav-bar="true" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true">
+  <ion-content >
+
+
+			<form ng-submit="postTask(task)">
+		      <input type="text" ng-model="task.title" class="form-control" placeholder="Task title" required><br>
+		      <textarea ng-model="task.description" class="form-control" placeholder="Describe what you need done" required></textarea><br>
+		      <input type="number" ng-model="task.total" class="form-control" placeholder="How much will you pay?" required><br>
+		      <button class="button button-positive" type="submit"> Post</button>
+		    </form>
+
+  </ion-content>
+  </ion-view>

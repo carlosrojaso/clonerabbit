@@ -1,0 +1,31 @@
+<ion-view view-title="Home" hide-nav-bar="true" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true">
+  <ion-content >
+<div class="container">
+  <div class="list">
+     <div class="item item-input-inset">
+       <label class="item-input-wrapper">
+				      		<input type="text" ng-model="searchTask" class="form-control" placeholder="Search">
+      </label>
+    </div>
+    <div class="item">
+      <a class="button button-positive" href="#/post">Post a Task</a>
+    </div>
+    <div class="list card" ng-repeat="task in tasks | filter: searchTask | orderBy: 'title'" >
+      <div class="item">
+        <div class="row-content">
+          <a ng-href="#/edit/{{task.$id}}">{{task.title | limitTo:25}}{{ task.title.length > 25? "..." : ""}}</a>
+            <span class="list-group-item-text">
+              {{task.description}}
+            </span>
+        </div>
+        <div class="payment">
+          <div>${{task.total}}</div>
+          <!-- <span class="label status {{task.status}}">{{task.status}}</span> -->
+        </div>
+      </div>
+    </div
+    </div>
+		</div>
+</div>
+</ion-content>
+</ion-view>
