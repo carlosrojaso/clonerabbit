@@ -1,0 +1,15 @@
+<script id="changepass.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Change Password</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="changePassword(user)">
+          <input type="email" ng-model="user.email" placeholder="Email" class="form-control" required><br>
+          <input type="password" ng-model="user.oldPass" placeholder="Old Password" class="form-control" required><br>
+          <input type="password" ng-model="user.newPass" placeholder="New Password" class="form-control" required><br>
+          <input type="submit" value="Update" class="btn btn-info">
+        </form>
+    </ion-content>
+  </ion-modal-view>
+</script>

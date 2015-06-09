@@ -2,6 +2,20 @@ angular.module('App', ['ionic','ionic-material','firebase'])
 .constant('FURL', 'https://clonerabbit.firebaseio.com/')
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+      .state('menu', {
+          url: "/menu",
+          abstract: true,
+          templateUrl: "views/nav.html",
+          controller: 'NavController'
+        })
+        .state('menu.home', {
+          url: "/home",
+          views: {
+            'menuContent' :{
+              templateUrl: "views/main.html"
+            }
+          }
+        })
       .state('browse', {
         url: '/',
         templateUrl: 'views/browse.html',
@@ -17,7 +31,7 @@ angular.module('App', ['ionic','ionic-material','firebase'])
         templateUrl: 'views/edit.html'
       })
       ;
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/menu/home");
   })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
