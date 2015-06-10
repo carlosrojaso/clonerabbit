@@ -1,4 +1,4 @@
-<ion-view view-title="Home" hide-nav-bar="true" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true">
+<ion-view view-title="Home" hide-nav-bar="false" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true">
   <ion-content >
 <div class="container">
   <div class="list">
@@ -8,7 +8,7 @@
       </label>
     </div>
     <div class="item">
-      <a class="button button-positive" href="#/post">Post a Task</a>
+      <a class="button button-positive" href="#/menu/post">Post a Task</a>
     </div>
     <div class="list card" ng-repeat="task in tasks | filter: searchTask | orderBy: 'title'" >
       <div class="item">

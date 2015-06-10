@@ -1,0 +1,20 @@
+<ion-view view-title="Register" hide-nav-bar="false" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true">
+  <ion-content >
+  <form>
+
+    <br>
+      <input type="name" ng-model="user.name" placeholder="Name" required>
+    <br>
+
+
+      <input type="email" ng-model="user.email" placeholder="Email" required>
+    <br>
+
+
+      <input type="password" ng-model="user.password" placeholder="Password" class="form-control" required>
+    <br>
+
+    <button ng-click="register(user)" class="button">Register</button>
+  </form>
+</ion-content>
+</ion-view>

@@ -8,6 +8,11 @@ angular.module('App', ['ionic','ionic-material','firebase'])
           templateUrl: "views/nav.html",
           controller: 'NavController'
         })
+        .state('login', {
+            url: "/login",
+            templateUrl: "views/login.html",
+            controller: 'AuthController'
+          })
         .state('menu.home', {
           url: "/home",
           views: {
@@ -16,22 +21,44 @@ angular.module('App', ['ionic','ionic-material','firebase'])
             }
           }
         })
-      .state('browse', {
-        url: '/',
+        .state('menu.post', {
+          url: "/post",
+          views: {
+            'menuContent' :{
+              templateUrl: "views/post.html",
+              controller: 'TaskController'
+            }
+          }
+        })
+      .state('menu.browse', {
+        url: '/browse',
+        views: {
+          'menuContent' :{
         templateUrl: 'views/browse.html',
         controller: 'TaskController'
+        }
+      }
       })
-      .state('post', {
-        url: '/post',
-        templateUrl: 'views/post.html',
-        controller: 'TaskController'
-      })
-      .state('edit', {
+      .state('menu.edit', {
         url: '/edit',
-        templateUrl: 'views/edit.html'
+        views: {
+          'menuContent' :{
+        templateUrl: 'views/edit.html',
+        controller: 'TaskController'
+        }
+      }
+      })
+      .state('menu.register', {
+        url: '/register',
+        views: {
+          'menuContent' :{
+        templateUrl: 'views/register.html',
+        controller: 'AuthController'
+        }
+      }
       })
       ;
-  $urlRouterProvider.otherwise("/menu/home");
+  $urlRouterProvider.otherwise("/login");
   })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

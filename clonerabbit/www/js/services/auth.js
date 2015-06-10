@@ -1,4 +1,4 @@
-angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebase) {
+angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArray, $firebaseObject) {
 
 	var ref = new Firebase(FURL);
 	var auth = $firebaseAuth(ref);
@@ -8,13 +8,14 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebase) {
 
     createProfile: function(uid, user) {
       var profile = {
+				id: uid,
         name: user.name,
         email: user.email,
         gravatar: get_gravatar(user.email, 40)
       };
 
-      var profileRef = $firebase(ref.child('profile'));
-      return profileRef.$set(uid, profile);
+      var profileRef = $firebaseArray(ref.child('profile'));
+      return profileRef.$add(profile);
     },
 
     login: function(user) {
@@ -51,10 +52,12 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebase) {
 	auth.$onAuth(function(authData) {
 		if(authData) {
       angular.copy(authData, Auth.user);
-      Auth.user.profile = $firebase(ref.child('profile').child(authData.uid)).$asObject();
+      Auth.user.profile = $firebaseObject(ref.child('profile').child(authData.uid));
+
 		} else {
       if(Auth.user && Auth.user.profile) {
         Auth.user.profile.$destroy();
+
       }
 
       angular.copy({}, Auth.user);

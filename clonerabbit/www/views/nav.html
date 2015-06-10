@@ -16,11 +16,17 @@
         </ion-header-bar>
         <ion-content>
           <ion-list>
+            <ion-item menu-close href="#/menu/browse" ng-hide="signedIn()">
+              Browse
+            </ion-item>
         <ion-item menu-close href="#/login" ng-hide="signedIn()">
           Login
         </ion-item>
-        <ion-item menu-close href="#/register" ng-hide="signedIn()">
+        <ion-item menu-close href="#/menu/register" ng-hide="signedIn()">
           Register
+        </ion-item>
+        <ion-item menu-close href="#/menu/post">
+          New Post
         </ion-item>
         <ion-item menu-close click="modal.show()">
           Change Password
